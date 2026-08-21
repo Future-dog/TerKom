@@ -1,0 +1,187 @@
+:root {
+    --color1: #F9FBFC; /**/
+    --color2: #7AC2BF; /**/
+    --color3: #1E3865; /**/
+    --color4: #AFA699; /**/
+    --color5: #34302A; /**/
+    --color6: #796A65; /**/
+    --color7: #F3EDE1; /**/
+    --color8: #635F70; /**/
+    --read-font: "Inter";
+    --big-font: "Commissioner";
+}
+
+@font-face {
+    font-family: "Commissioner";
+    src: local("Commissioner"),
+    url("./fonts/Commissioner-VariableFont_FLAR_VOLM_slnt_wght.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Inter";
+    src: local("Inter"),
+    url("./fonts/Inter-VariableFont_opsz_wght.ttf") format("truetype");
+}
+
+a {
+    text-decoration: none;
+}
+
+span {
+    font-size: 1.125rem;
+    color: var(--color1);
+}
+
+html {
+    font-family: "Inter";
+    overflow-x: hidden;
+}
+
+/* --------background-main------ */
+
+.background-main {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(./img/mountains.jpg);
+    background-size: cover;
+    position: fixed;
+    z-index: -1;
+}
+
+/* -----main------- */
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-text {
+    font-family: var(--big-font);
+    font-size: 1.25rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+}
+
+.main p {
+    max-width: 720px;
+    margin-bottom: 2.25rem;
+    margin-top: 1rem;
+    font-family: var(--big-font);
+    font-style: normal;
+    font-size: 4.5rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.15;
+    color: var(--color1);
+}
+
+.main button {
+    width: 160px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color2);
+    border: none;
+    border-radius: 10px;
+    transition: all .2s ease-in-out;
+}
+
+.main button:hover {
+    background-color: var(--color3);
+}
+
+.arrow {
+    font-family: var(--read-font);
+    font-size: 1.125rem;
+    color: var(--color1);
+    transition: all .2s ease-in-out;
+}
+
+.main button:hover .arrow{
+    transform: translateX(7px);
+}
+
+/* --------- familiar? ---------- */
+
+.familiar {
+    width: 100vw;
+    background-color: var(--color7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 120px 0 120px 0;
+}
+
+.familiar span {
+    font-size: 3rem;
+    color: var(--color5);
+    font-weight: 600;
+    margin-bottom: 3rem;
+}
+
+.familiar p {
+    font-family: var(--big-font);
+    font-size: 2rem;
+    color: var(--color5);
+    margin-bottom: 2rem;
+}
+
+.familiar #grid {
+    width: 964px;
+    height: 536px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 3.5rem;
+    row-gap: 1.75rem;
+}
+
+.familiar article {
+    perspective: 1700px;
+}
+
+.flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+}
+
+.flipper div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 0 30px;
+    border: 1px solid var(--color8);
+    border-radius: 10px;
+    font-family: var(--big-font);
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 1.2;
+    backface-visibility: hidden;
+}
+
+.flipper div:nth-child(odd) {
+    background-color: var(--color7);
+    color: var(--color5);
+}
+
+.flipper div:nth-child(even) {
+    background-color: var(--color6);
+    color: var(--color1);
+    transform: rotateY(180deg);
+}
+
+.familiar article:hover .flipper {
+    transform: rotateY(180deg);
+} 
