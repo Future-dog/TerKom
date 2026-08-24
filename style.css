@@ -1,12 +1,20 @@
 :root {
-    --color1: #F9FBFC; /**/
-    --color2: #7AC2BF; /**/
-    --color3: #1E3865; /**/
-    --color4: #AFA699; /**/
-    --color5: #34302A; /**/
-    --color6: #796A65; /**/
-    --color7: #F3EDE1; /**/
-    --color8: #635F70; /**/
+    --color1: #F9FBFC;
+    /**/
+    --color2: #7AC2BF;
+    /**/
+    --color3: #1E3865;
+    /**/
+    --color4: #AFA699;
+    /**/
+    --color5: #34302A;
+    /**/
+    --color6: #796A65;
+    /**/
+    --color7: #F3EDE1;
+    /**/
+    --color8: #635F70;
+    /**/
     --read-font: "Inter";
     --big-font: "Commissioner";
 }
@@ -14,13 +22,13 @@
 @font-face {
     font-family: "Commissioner";
     src: local("Commissioner"),
-    url("./fonts/Commissioner-VariableFont_FLAR_VOLM_slnt_wght.ttf") format("truetype");
+        url("./fonts/Commissioner-VariableFont_FLAR_VOLM_slnt_wght.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "Inter";
     src: local("Inter"),
-    url("./fonts/Inter-VariableFont_opsz_wght.ttf") format("truetype");
+        url("./fonts/Inter-VariableFont_opsz_wght.ttf") format("truetype");
 }
 
 a {
@@ -61,7 +69,8 @@ html {
 
 .main-text {
     font-family: var(--big-font);
-    font-size: 1.25rem;
+    font-size: 2rem;
+    font-weight: 600;
     letter-spacing: 6px;
     text-transform: uppercase;
 }
@@ -73,7 +82,7 @@ html {
     font-family: var(--big-font);
     font-style: normal;
     font-size: 4.5rem;
-    font-weight: 600;
+    /* font-weight: 600; */
     text-align: center;
     line-height: 1.15;
     color: var(--color1);
@@ -102,7 +111,7 @@ html {
     transition: all .2s ease-in-out;
 }
 
-.main button:hover .arrow{
+.main button:hover .arrow {
     transform: translateX(7px);
 }
 
@@ -153,6 +162,7 @@ html {
     transform-style: preserve-3d;
 }
 
+
 .flipper div {
     position: absolute;
     width: 100%;
@@ -171,6 +181,18 @@ html {
     backface-visibility: hidden;
 }
 
+.div-svg {
+    justify-content: end !important;
+    padding-bottom: 87px !important;
+}
+
+.flipper svg {
+    position: relative;
+    bottom: 30%;
+    right: 50%;
+    color: var(--color8)
+}
+
 .flipper div:nth-child(odd) {
     background-color: var(--color7);
     color: var(--color5);
@@ -184,4 +206,166 @@ html {
 
 .familiar article:hover .flipper {
     transform: rotateY(180deg);
-} 
+}
+
+/* ---------- full cycle ----------- */
+
+.full-cycle {
+    background-color: var(--color1);
+    padding: 120px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.cont {
+    max-width: 1300px;
+    display: flex;
+    gap: 6.6rem;
+}
+
+.cont img {
+    border-radius: 10px;
+    width: 564px;
+    height: 366px;
+    position: sticky;
+    top: 1rem;
+}
+
+.cycle-text {
+    max-width: 626px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--color5);
+    font-family: var(--big-font);
+    font-size: 3rem;
+    gap: 1.125rem;
+}
+
+details:first-child {
+    margin-top: 1rem;
+}
+
+details {
+    width: 39.125rem;
+}
+
+summary {
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--color6);
+    border: 1px solid var(--color6);
+    border-radius: 10px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+summary svg {
+    width: 30px;
+    transition: transform 0.3s ease;
+}
+
+details[open] summary {
+    color: var(--color1);
+    background-color: var(--color3);
+    border-color: var(--color3);
+}
+ 
+details[open] summary svg {
+  transform: rotate(180deg);
+}
+
+details p {
+    position: relative;
+    bottom: 0.5rem;
+    font-family: var(--read-font);
+    font-size: 1rem;
+    color: var(--color6);
+    border: 1px solid var(--color6);
+    border-radius: 0 0 10px 10px;
+    border-top: 0;
+    text-align: justify;
+    padding: 1rem 1.5rem 0.5rem;
+}
+
+details[open] p {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ------- all services --------*/
+
+.services {
+    width: 100vw;
+    height: 100vh;
+    font-family: var(--big-font);
+    font-size: 2rem;
+    color: var(--color1);
+    background-color: var(--color3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 120px 24px 0;
+}
+
+#titles {
+    position: absolute;
+    top: 733px;
+	width: 100%;
+	height: 90em;
+    left: 50%;
+	margin-left: -49.5vw;
+	transform-origin: 50% 100%;
+    overflow: hidden;
+	transform: perspective(400px) rotateX(20deg);
+}
+
+#titlecontent img {
+ width: 100%;
+ aspect-ratio: 1080/750;
+}
+
+#titlecontent {
+    width: 100%;
+    height: 100%;
+	position: relative;
+	top: 100%;
+    transition: top 0.1s linear;
+	/* animation: scroll 200s linear 0s infinite; */
+}
+
+/* #titlecontent.active {
+  animation: scroll 200s linear 0s infinite;
+} */
+
+/* @keyframes scroll {
+	0% { top: 100%; }
+	100% { top: -170%; }
+} */
+
+.services-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(7, auto);
+    font-family: var(--read-font);
+    font-size: 2rem;
+    row-gap: 2.5rem;
+    column-gap: 2rem;
+    text-align: left;
+}
+
+.services-grid span{
+    font-family: var(--read-font);
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: right;
+}
