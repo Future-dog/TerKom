@@ -218,9 +218,9 @@ html {
 }
 
 .cont {
-    max-width: 1300px;
+    max-width: 1170px;
     display: flex;
-    gap: 6.6rem;
+    gap: 6rem;
 }
 
 .cont img {
@@ -238,7 +238,8 @@ html {
     align-items: center;
     color: var(--color5);
     font-family: var(--big-font);
-    font-size: 3rem;
+    font-size: 2rem;
+    font-weight: 600;
     gap: 1.125rem;
 }
 
@@ -247,12 +248,13 @@ details:first-child {
 }
 
 details {
-    width: 39.125rem;
+    width: 32rem;
 }
 
 summary {
-    padding: 1.5rem;
+    padding: 1rem;
     font-size: 1.5rem;
+    font-weight: normal;
     color: var(--color6);
     border: 1px solid var(--color6);
     border-radius: 10px;
@@ -283,12 +285,13 @@ details p {
     bottom: 0.5rem;
     font-family: var(--read-font);
     font-size: 1rem;
+    font-weight: normal;
     color: var(--color6);
     border: 1px solid var(--color6);
     border-radius: 0 0 10px 10px;
     border-top: 0;
     text-align: justify;
-    padding: 1rem 1.5rem 0.5rem;
+    padding: 1rem 1rem 0.5rem;
 }
 
 details[open] p {
@@ -368,4 +371,195 @@ details[open] p {
     font-size: 2rem;
     font-weight: 600;
     text-align: right;
+}
+
+/* --------- packaged solutions -------------------- */
+
+.solutions {
+    width: 100vw;
+    background-color: var(--color1);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    
+}
+
+#solutions-title {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    padding: 2rem 0;
+    font-family: var(--big-font);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color5);
+    justify-self: center;
+}
+
+.square {
+    border-right-style: solid;
+    border-right-color: var(--color6);
+    border-right-width: 1px;
+    border-top-style: solid;
+    border-top-color: var(--color6);
+    border-top-width: 1px;
+    /* border-bottom-style: solid;
+    border-bottom-color: var(--color5);
+    border-bottom-width: 1px; */
+    padding-top: 92px;
+    padding-right: 10%;
+    padding-bottom: 92px;
+    padding-left: 10%;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* .square svg {
+    width: 56px;
+    height: 56px;
+} */
+
+.square span {
+    font-size: 1.25rem;
+    font-family: var(--big-font);
+    color: var(--color5);
+}
+
+.square p {
+    margin-top: 1rem;
+    font-family: var(--read-font);
+    font-style: normal;
+    font-size: 1rem;
+    color: var(--color6);
+    line-height: 1.6;
+}
+
+/* --------- facts ----------- */
+
+.facts {
+    background-color: var(--color7);
+    padding-top: 120px;
+    padding-right: 1.5rem;
+    padding-bottom: 120px;
+    padding-left: 1.5rem;
+}
+
+.facts-trolley {
+    max-width: 1170px;
+    display: flex;
+    margin: auto;
+    gap: 2em 5.06rem;
+}
+
+.facts-text {
+    flex-basis: 45%;
+    position: sticky;
+    top: 0;
+    height: fit-content;
+}
+
+.facts-title {
+    color: var(--color5);
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: var(--big-font);
+    line-height: 1.2;
+    max-width: 720px;
+}
+
+.facts-text p {
+    margin-block-start: 1.5rem;
+    margin-bottom: 2em;
+    color: var(--color6);
+    font-size: 1.125rem;
+    font-family: var(--read-font);
+    line-height: 1.6;
+    max-width: 720px;
+}
+
+.facts-text div {
+    max-width: 720px;
+}
+
+.facts-text div div {
+    display: flex;
+    gap: 0.44rem;
+    color: var(--color6);
+    font-size: 1rem;
+    font-family: var(--read-font);
+}
+
+.facts button {
+    margin-top: 2.25rem;
+    padding: 14px 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color2);
+    border: none;
+    border-radius: 10px;
+    transition: all .2s ease-in-out;
+}
+
+.facts button:hover {
+    background-color: var(--color3);
+}
+
+.facts button:hover .arrow{
+    transform: translateX(7px);
+}
+
+.album {
+    flex-basis: 55%;
+    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(12rem, 100%), 1fr));
+    container-type: inline-size;
+}
+
+.album img {
+    border-radius: 10px;
+}
+
+.album img:last-child {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+/* ---------- footer ------------ */
+
+footer {
+    padding: 80px 24px;
+    background-color: var(--color3);
+    display: flex;
+    justify-content: center;
+}
+
+footer div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    max-width: 1170px;
+    font-family: var(--big-font);
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color1);
+}
+
+footer span {
+    display: flex;
+    gap: 1.5rem;
+}
+
+footer a {
+    font-family: var(--read-font);
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--color4);
+    transition: color .2s ease-in-out;
+}
+
+footer a:hover {
+    color: var(--color1);
 }
