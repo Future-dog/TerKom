@@ -41,8 +41,22 @@ span {
 }
 
 html {
+    font-size: 16px;
     font-family: "Inter";
     overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Для телефонов */
+@media (max-width: 480px) {
+  html {
+    font-size: 12px;
+  }
 }
 
 /* --------background-main------ */
@@ -50,12 +64,19 @@ html {
 .background-main {
     width: 100vw;
     height: 100vh;
-    background-image: url(./img/mountains.jpg);
-    background-size: cover;
     position: fixed;
     z-index: -1;
+    background-image: url(./img/home.webp);
+    background-size: cover;
+    background-position: 50% 40%;
 }
 
+.background-img {
+    background-color: var(--color3);
+    opacity: 0.4;
+    width: 100%;
+    height: 100%;
+}
 /* -----main------- */
 
 .main {
@@ -73,6 +94,7 @@ html {
     font-weight: 600;
     letter-spacing: 6px;
     text-transform: uppercase;
+    text-align: center;
 }
 
 .main p {
@@ -89,8 +111,7 @@ html {
 }
 
 .main button {
-    width: 160px;
-    height: 56px;
+    padding: 0.875rem 1.625rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,7 +133,7 @@ html {
 }
 
 .main button:hover .arrow {
-    transform: translateX(7px);
+    transform: translateX(0.5rem);
 }
 
 /* --------- familiar? ---------- */
@@ -321,7 +342,7 @@ details[open] p {
 
 #titles {
     position: absolute;
-    top: 733px;
+    top: 645px;
 	width: 100%;
 	height: 90em;
     left: 50%;
@@ -491,7 +512,7 @@ details[open] p {
 
 .facts button {
     margin-top: 2.25rem;
-    padding: 14px 26px;
+    padding: 0.875rem 1.625rem;
     display: flex;
     align-items: center;
     justify-content: center;
