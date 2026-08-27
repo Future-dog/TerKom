@@ -85,3 +85,81 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 observer.observe(titles);
+
+// -------------- familiar? ----------
+
+function setPaddingFromHeight() {
+    const divs = document.querySelectorAll('.div-svg');
+    divs.forEach(div => {
+        const parent = div.parentElement; // это .flipper
+        if (!parent) return;
+        const parentHeight = parent.offsetHeight;
+        if (parentHeight > 0) {
+            const paddingB = parentHeight * 0.265; // 15% от высоты родителя
+            const paddingT = parentHeight * 0.05;
+            div.style.paddingBottom = paddingB + 'px';
+            div.style.paddingTop = paddingT + 'px';
+            // Опционально: сбросить justify-content, если он мешает
+            // div.style.justifyContent = 'flex-end'; // можно задать через JS
+        }
+    });
+}
+
+// Запускаем при загрузке
+document.addEventListener('DOMContentLoaded', setPaddingFromHeight);
+
+// Пересчитываем при ресайзе окна (если размеры меняются)
+let resizeTimer;
+window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(setPaddingFromHeight, 200); // debounce
+});
+
+// flipper mobile animation
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Проверяем, мобильное ли устройство (ширина <= 690px)
+  const isMobile = window.matchMedia('(max-width: 690px)');
+
+  function updateCards() {
+    // Если не мобилка – ничего не делаем (или можно убрать проверку для универсальности)
+    if (!isMobile.matches) return;
+
+    const cards = document.querySelectorAll('.familiar article');
+    const viewportHeight = window.innerHeight;
+    const centerY = viewportHeight / 2;
+    const tolerance = 250; // допуск от центра (можно подогнать под свой дизайн)
+
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const cardCenterY = rect.top + rect.height / 2;
+      const isCentered = Math.abs(cardCenterY - centerY) < tolerance;
+      const flipper = card.querySelector('.flipper');
+      if (flipper) {
+        if (isCentered) {
+          flipper.classList.add('flipped');
+        } else {
+          flipper.classList.remove('flipped');
+        }
+      }
+    });
+  }
+
+  // Запускаем при загрузке
+  updateCards();
+
+  // Следим за прокруткой с оптимизацией через requestAnimationFrame
+  let ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        updateCards();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // Обновляем при изменении размера окна (поворот экрана)
+  window.addEventListener('resize', updateCards);
+});

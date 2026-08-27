@@ -47,16 +47,22 @@ html {
 }
 
 @media (max-width: 768px) {
-  html {
-    font-size: 14px;
-  }
+    html {
+        font-size: 14px;
+    }
 }
 
 /* Для телефонов */
 @media (max-width: 480px) {
-  html {
-    font-size: 12px;
-  }
+    html {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    html {
+        font-size: 9.5px;
+    }
 }
 
 /* --------background-main------ */
@@ -77,6 +83,7 @@ html {
     width: 100%;
     height: 100%;
 }
+
 /* -----main------- */
 
 .main {
@@ -144,10 +151,10 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 120px 0 120px 0;
+    padding: 120px 24px;
 }
 
-.familiar span {
+.familiar>span {
     font-size: 3rem;
     color: var(--color5);
     font-weight: 600;
@@ -159,10 +166,13 @@ html {
     font-size: 2rem;
     color: var(--color5);
     margin-bottom: 2rem;
+    text-align: center;
 }
 
 .familiar #grid {
-    width: 964px;
+    max-width: 964px;
+    min-width: 640px;
+    width: 60vw;
     height: 536px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -189,7 +199,7 @@ html {
     width: 100%;
     height: 100%;
     padding: 0 30px;
-    border: 1px solid var(--color8);
+    border: 2px solid var(--color8);
     border-radius: 10px;
     font-family: var(--big-font);
     font-size: 2rem;
@@ -203,13 +213,21 @@ html {
 }
 
 .div-svg {
-    justify-content: end !important;
-    padding-bottom: 87px !important;
+    justify-content: space-between !important;
+
+    /* padding-bottom: 15% !important; */
+    /* transform: translateY(-50%) */
+}
+
+.div-svg span {
+    font-family: var(--big-font);
+    font-size: 2rem;
+    color: var(--color5);
 }
 
 .flipper svg {
     position: relative;
-    bottom: 30%;
+    /* bottom: 30%; */
     right: 50%;
     color: var(--color8)
 }
@@ -229,6 +247,37 @@ html {
     transform: rotateY(180deg);
 }
 
+@media (max-width: 690px) {
+    .familiar #grid {
+        min-width: 5vw;
+        width: 50vw;
+        aspect-ratio: 454 / 254;
+        grid-template-columns: auto;
+        grid-template-rows: repeat(4, 1fr);
+
+        .flipper div {
+            font-size: 1.5rem;
+        }
+
+        .div-svg span {
+            font-size: 1.5rem;
+        }
+
+        .div-svg svg {
+            opacity: 0;
+        }
+    }
+
+    .familiar article:hover .flipper {
+        transform: none;
+    }
+
+    /* Включаем переворот при наличии класса .flipped */
+    .familiar article .flipper.flipped {
+        transform: rotateY(180deg);
+    }
+}
+
 /* ---------- full cycle ----------- */
 
 .full-cycle {
@@ -239,12 +288,14 @@ html {
 }
 
 .cont {
+    width: 90vw;
     max-width: 1170px;
     display: flex;
+    justify-content: center;
     gap: 6rem;
 }
 
-.cont img {
+.cont>img {
     border-radius: 10px;
     width: 564px;
     height: 366px;
@@ -296,9 +347,9 @@ details[open] summary {
     background-color: var(--color3);
     border-color: var(--color3);
 }
- 
+
 details[open] summary svg {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 details p {
@@ -316,14 +367,79 @@ details p {
 }
 
 details[open] p {
-  animation: fadeIn 0.3s ease;
+    animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to   { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+@media (max-width: 1320px) {
+    .cont {
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 1250px) {
+    .cont>img {
+        width: 400px;
+        height: 224px;
+    }
+}
+
+@media (max-width: 1100px) {
+
+    .cont {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        column-gap: 0;
+        row-gap: 1rem;
+    }
+
+    .cont > img {
+        position: static;
+        width: 512px;
+        height: 286px;
+    }
+}
+
+@media (max-width: 770px) {
+    .cont {
+        width: fit-content;
+    }
+
+    .cycle-text {
+        width: fit-content;
+    }
+
+    .cont > img {
+        width: 448px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cont > img {
+        width: 384px;
+        height: 214px;
+    }
+}
+
+@media (max-width: 400px) {
+    .cont > img {
+        width: 304px;
+        height: 170px;
+    }
+}
 /* ------- all services --------*/
 
 .services {
@@ -343,27 +459,27 @@ details[open] p {
 #titles {
     position: absolute;
     top: 645px;
-	width: 100%;
-	height: 90em;
+    width: 100%;
+    height: 90em;
     left: 50%;
-	margin-left: -49.5vw;
-	transform-origin: 50% 100%;
+    margin-left: -49.5vw;
+    transform-origin: 50% 100%;
     overflow: hidden;
-	transform: perspective(400px) rotateX(20deg);
+    transform: perspective(400px) rotateX(20deg);
 }
 
 #titlecontent img {
- width: 100%;
- aspect-ratio: 1080/750;
+    width: 100%;
+    aspect-ratio: 1080/750;
 }
 
 #titlecontent {
     width: 100%;
     height: 100%;
-	position: relative;
-	top: 100%;
+    position: relative;
+    top: 100%;
     transition: top 0.1s linear;
-	/* animation: scroll 200s linear 0s infinite; */
+    /* animation: scroll 200s linear 0s infinite; */
 }
 
 /* #titlecontent.active {
@@ -387,7 +503,7 @@ details[open] p {
     text-align: left;
 }
 
-.services-grid span{
+.services-grid span {
     font-family: var(--read-font);
     font-size: 2rem;
     font-weight: 600;
@@ -402,7 +518,7 @@ details[open] p {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto auto;
-    
+
 }
 
 #solutions-title {
@@ -526,7 +642,7 @@ details[open] p {
     background-color: var(--color3);
 }
 
-.facts button:hover .arrow{
+.facts button:hover .arrow {
     transform: translateX(7px);
 }
 
