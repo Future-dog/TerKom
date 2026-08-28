@@ -405,7 +405,7 @@ details[open] p {
         row-gap: 1rem;
     }
 
-    .cont > img {
+    .cont>img {
         position: static;
         width: 512px;
         height: 286px;
@@ -421,25 +421,26 @@ details[open] p {
         width: fit-content;
     }
 
-    .cont > img {
+    .cont>img {
         width: 448px;
         height: 250px;
     }
 }
 
 @media (max-width: 480px) {
-    .cont > img {
+    .cont>img {
         width: 384px;
         height: 214px;
     }
 }
 
 @media (max-width: 400px) {
-    .cont > img {
+    .cont>img {
         width: 304px;
         height: 170px;
     }
 }
+
 /* ------- all services --------*/
 
 .services {
@@ -510,6 +511,12 @@ details[open] p {
     text-align: right;
 }
 
+@media (max-width: 768px) {
+    #titles {
+        display: none;
+    }
+}
+
 /* --------- packaged solutions -------------------- */
 
 .solutions {
@@ -518,7 +525,6 @@ details[open] p {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto auto;
-
 }
 
 #solutions-title {
@@ -542,10 +548,7 @@ details[open] p {
     /* border-bottom-style: solid;
     border-bottom-color: var(--color5);
     border-bottom-width: 1px; */
-    padding-top: 92px;
-    padding-right: 10%;
-    padding-bottom: 92px;
-    padding-left: 10%;
+    padding: 5.75rem 10%;
     display: flex;
     justify-content: center;
     gap: 1.5rem;
@@ -569,6 +572,23 @@ details[open] p {
     font-size: 1rem;
     color: var(--color6);
     line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .solutions {
+        grid-template-columns: none;
+        grid-template-rows: auto 1fr 1fr 1fr;
+    }
+
+    #solutions-title {
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+
+    .square {
+        padding: 4rem 10% 4rem 20%;
+        justify-content: left;
+    }
 }
 
 /* --------- facts ----------- */
@@ -626,6 +646,10 @@ details[open] p {
     font-family: var(--read-font);
 }
 
+.facts-text div div img {
+    height: 1.5rem;
+}
+
 .facts button {
     margin-top: 2.25rem;
     padding: 0.875rem 1.625rem;
@@ -661,6 +685,27 @@ details[open] p {
 .album img:last-child {
     grid-column: span 2;
     grid-row: span 1;
+}
+
+@media (max-width: 890px) {
+    .facts-trolley {
+        flex-direction: column;
+    }
+
+    .facts-text {
+        position: static;
+    }
+
+    .album {
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .album img:last-child {
+        grid-column: 1/-1;
+        grid-row: auto;
+    }
 }
 
 /* ---------- footer ------------ */
@@ -699,4 +744,11 @@ footer a {
 
 footer a:hover {
     color: var(--color1);
+}
+
+@media (max-width: 890px) {
+    footer div {
+        flex-direction: column;
+        row-gap: 1rem;
+    }
 }

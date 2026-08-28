@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.familiar article');
     const viewportHeight = window.innerHeight;
     const centerY = viewportHeight / 2;
-    const tolerance = 250; // допуск от центра (можно подогнать под свой дизайн)
+    const tolerance = 70; // допуск от центра (можно подогнать под свой дизайн)
 
     cards.forEach(card => {
       const rect = card.getBoundingClientRect();
