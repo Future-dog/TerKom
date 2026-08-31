@@ -16,7 +16,8 @@
     --color8: #635F70;
     /**/
     --read-font: "Inter";
-    --big-font: "Commissioner";
+    --big-font: "Libre Franklin";
+    --title-font: "Kurale"
 }
 
 @font-face {
@@ -29,6 +30,19 @@
     font-family: "Inter";
     src: local("Inter"),
         url("./fonts/Inter-VariableFont_opsz_wght.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Libre Franklin";
+    src: local("Libre Franklin"),
+        local("Libre-Franklin"),
+        url("./fonts/LibreFranklin-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Kurale";
+    src: local("Kurale"),
+        url("./fonts/Kurale-Regular.ttf") format("truetype");
 }
 
 a {
@@ -97,27 +111,28 @@ html {
 
 .main-text {
     font-family: var(--big-font);
-    font-size: 2rem;
+    font-size: 4rem;
     font-weight: 600;
-    letter-spacing: 6px;
+    letter-spacing: 18px;
     text-transform: uppercase;
     text-align: center;
 }
 
 .main p {
+    text-transform: uppercase;
     max-width: 720px;
-    margin-bottom: 2.25rem;
-    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+    margin-top: 0.5rem;
     font-family: var(--big-font);
     font-style: normal;
-    font-size: 4.5rem;
+    font-size: 2rem;
     /* font-weight: 600; */
     text-align: center;
     line-height: 1.15;
     color: var(--color1);
 }
 
-.main button {
+.main a {
     padding: 0.875rem 1.625rem;
     display: flex;
     align-items: center;
@@ -128,8 +143,9 @@ html {
     transition: all .2s ease-in-out;
 }
 
-.main button:hover {
+.main a:hover {
     background-color: var(--color3);
+    cursor: pointer;
 }
 
 .arrow {
@@ -143,6 +159,29 @@ html {
     transform: translateX(0.5rem);
 }
 
+@media (max-width: 600px) {
+    .main-text {
+        letter-spacing: 9px;
+    }
+}
+
+@media (max-width: 550px) {
+    .main-text {
+        letter-spacing: 4px;
+    }
+}
+
+@media (max-width: 380px) {
+    .main-text {
+        letter-spacing: 0px;
+    }
+}
+
+/* @media (max-width: 410px) {
+    .main-text {
+        letter-spacing: 1px;
+    }
+} */
 /* --------- familiar? ---------- */
 
 .familiar {
@@ -155,7 +194,7 @@ html {
 }
 
 .familiar>span {
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: var(--color5);
     font-weight: 600;
     margin-bottom: 3rem;
@@ -163,7 +202,7 @@ html {
 
 .familiar p {
     font-family: var(--big-font);
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--color5);
     margin-bottom: 2rem;
     text-align: center;
@@ -172,8 +211,8 @@ html {
 .familiar #grid {
     max-width: 964px;
     min-width: 640px;
-    width: 60vw;
-    height: 536px;
+    width: 50vw;
+    height: 485px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -194,15 +233,15 @@ html {
 }
 
 
-.flipper div {
+.flipper>div {
     position: absolute;
+    border: 2px solid var(--color8);
+    border-radius: 10px;
     width: 100%;
     height: 100%;
     padding: 0 30px;
-    border: 2px solid var(--color8);
-    border-radius: 10px;
     font-family: var(--big-font);
-    font-size: 2rem;
+    font-size: 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -212,23 +251,20 @@ html {
     backface-visibility: hidden;
 }
 
-.div-svg {
-    justify-content: space-between !important;
-
-    /* padding-bottom: 15% !important; */
-    /* transform: translateY(-50%) */
+.div-svg div {
+    padding-bottom: 0px;
 }
 
 .div-svg span {
     font-family: var(--big-font);
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--color5);
 }
 
 .flipper svg {
     position: relative;
-    /* bottom: 30%; */
-    right: 50%;
+    bottom: 70px;
+    right: calc(0.3*(100vw/8));
     color: var(--color8)
 }
 
@@ -247,6 +283,45 @@ html {
     transform: rotateY(180deg);
 }
 
+@media (max-width: 1409px) {
+    .flipper svg {
+        right: calc(0.28*(100vw/8));
+    }
+}
+
+@media (max-width: 1370px) {
+    .flipper svg {
+        bottom: 56px;
+        right: calc(0.24*(100vw/8));
+    }
+}
+
+@media (max-width: 1240px) {
+    .flipper svg {
+        bottom: 60px;
+        right: calc(0.23*(100vw/8));
+    }
+}
+
+@media (max-width: 1160px) {
+    .flipper svg {
+        right: calc(0.20*(100vw/8));
+    }
+}
+
+@media (max-width: 1104px) {
+    .flipper svg {
+        bottom: 54px;
+        right: calc(0.24*(100vw/8));
+    }
+}
+
+@media (max-width: 768px) {
+    .flipper svg {
+        right: calc(0.18*(100vw/8));
+    }
+}
+
 @media (max-width: 690px) {
     .familiar #grid {
         min-width: 5vw;
@@ -254,18 +329,18 @@ html {
         aspect-ratio: 454 / 254;
         grid-template-columns: auto;
         grid-template-rows: repeat(4, 1fr);
+    }
 
-        .flipper div {
-            font-size: 1.5rem;
-        }
+    .flipper div {
+        font-size: 1.5rem;
+    }
 
-        .div-svg span {
-            font-size: 1.5rem;
-        }
+    .flipper div span {
+        font-size: 1.5rem;
+    }
 
-        .div-svg svg {
-            opacity: 0;
-        }
+    .div-svg svg {
+        display: none;
     }
 
     .familiar article:hover .flipper {
@@ -301,6 +376,7 @@ html {
     height: 366px;
     position: sticky;
     top: 1rem;
+    margin-top: 3rem;
 }
 
 .cycle-text {
@@ -409,6 +485,7 @@ details[open] p {
         position: static;
         width: 512px;
         height: 286px;
+        margin-top: 0;
     }
 }
 
@@ -445,75 +522,111 @@ details[open] p {
 
 .services {
     width: 100vw;
-    height: 100vh;
     font-family: var(--big-font);
     font-size: 2rem;
+    font-weight: 600;
     color: var(--color1);
     background-color: var(--color3);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    padding: 120px 24px 0;
+    gap: 3rem;
+    padding: 90px 24px 120px;
 }
 
-#titles {
-    position: absolute;
-    top: 645px;
-    width: 100%;
-    height: 90em;
-    left: 50%;
-    margin-left: -49.5vw;
-    transform-origin: 50% 100%;
-    overflow: hidden;
-    transform: perspective(400px) rotateX(20deg);
+#text {
+    max-width: 1170px;
+    width: 95%;
 }
 
-#titlecontent img {
-    width: 100%;
-    aspect-ratio: 1080/750;
-}
 
-#titlecontent {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    top: 100%;
-    transition: top 0.1s linear;
-    /* animation: scroll 200s linear 0s infinite; */
-}
-
-/* #titlecontent.active {
-  animation: scroll 200s linear 0s infinite;
-} */
-
-/* @keyframes scroll {
-	0% { top: 100%; }
-	100% { top: -170%; }
-} */
-
-.services-grid {
+/* .services-grid {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(7, auto);
-    font-family: var(--read-font);
-    font-size: 2rem;
-    row-gap: 2.5rem;
-    column-gap: 2rem;
+    row-gap: 1.5rem;
+    column-gap: 1rem;
     text-align: left;
 }
 
 .services-grid span {
     font-family: var(--read-font);
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: 600;
     text-align: right;
+} */
+
+.services-grid {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 1.5rem 0rem;
 }
 
+/* Каждый ряд – контейнер, который не влияет на сетку */
+.row {
+    display: contents;
+    /* дети (input, label, desc) встают в сетку напрямую */
+}
+
+/* Скрываем радиокнопки */
+.row input[type="radio"] {
+    display: none;
+}
+
+/* Заголовки – первая колонка */
+.row label {
+    grid-column: 1 / 2;
+    cursor: pointer;
+    transition: color 0.2s;
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: var(--read-font);
+    font-weight: 600;
+    border-top: 1px solid var(--color8);
+    /* border-radius: 10px 0 0 10px; */
+    padding: 0.2rem;
+}
+
+.row label:hover {
+    color: var(--color2);
+}
+
+/* Описания – вторая колонка */
+.row .desc {
+    grid-column: 2 / 3;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.6s ease, padding 0.3s ease, opacity 0.3s ease;
+    padding: 0.2rem;
+    opacity: 0;
+    font-family: var(--read-font);
+    font-size: 1.2rem;
+    font-weight: normal;
+    border-top: 1px solid var(--color8);
+    /* border-radius: 0 10px 10px 0; */
+}
+
+/* Когда радиокнопка выбрана – раскрываем описание */
+.row input[type="radio"]:checked~.desc {
+    max-height: 500px;
+    opacity: 1;
+}
+
+/* Адаптивность: на узких экранах делаем одну колонку */
 @media (max-width: 768px) {
-    #titles {
-        display: none;
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .row label {
+        grid-column: 1 / 2;
+    }
+
+    .row .desc {
+        grid-column: 1 / 2;
+        text-align: justify;
     }
 }
 
@@ -650,10 +763,11 @@ details[open] p {
     height: 1.5rem;
 }
 
-.facts button {
+.facts a {
     margin-top: 2.25rem;
     padding: 0.875rem 1.625rem;
     display: flex;
+    width: fit-content;
     align-items: center;
     justify-content: center;
     background-color: var(--color2);
@@ -662,11 +776,12 @@ details[open] p {
     transition: all .2s ease-in-out;
 }
 
-.facts button:hover {
+.facts a:hover {
     background-color: var(--color3);
+    cursor: pointer;
 }
 
-.facts button:hover .arrow {
+.facts a:hover .arrow {
     transform: translateX(7px);
 }
 
@@ -711,25 +826,43 @@ details[open] p {
 /* ---------- footer ------------ */
 
 footer {
-    padding: 80px 24px;
+    padding: 64px 24px;
     background-color: var(--color3);
     display: flex;
     justify-content: center;
 }
 
-footer div {
+footer>div {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 80%;
     max-width: 1170px;
-    font-family: var(--big-font);
+    font-family: var(--title-font);
     font-size: 2rem;
     font-weight: bold;
     color: var(--color1);
 }
 
-footer span {
+footer>div>div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+}
+
+#ter {
+    font-family: var(--title-font);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+footer svg {
+    width: 5rem;
+    height: 5rem;
+}
+
+footer #nav {
     display: flex;
     gap: 1.5rem;
 }
@@ -746,9 +879,32 @@ footer a:hover {
     color: var(--color1);
 }
 
-@media (max-width: 890px) {
-    footer div {
+@media (max-width: 1115px) {
+    footer #nav {
         flex-direction: column;
-        row-gap: 1rem;
+    }
+
+    #nav a {
+        text-align: right;
+    }
+}
+
+
+@media (max-width: 890px) {
+    footer>div {
+        flex-direction: column;
+        row-gap: 1rem
+    }
+
+    #ter {
+        width: min-content;
+    }
+
+    footer #nav {
+        flex-direction: row;
+    }
+
+    footer {
+        padding: 32px 24px;
     }
 }
