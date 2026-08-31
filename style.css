@@ -790,16 +790,46 @@ details[open] p {
     gap: 1.5rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(12rem, 100%), 1fr));
+    grid-template-rows: auto auto;
     container-type: inline-size;
 }
 
-.album img {
+.album article {
+    perspective: 2700px;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+.flipper-fact {
+    width: auto;
+    height: auto;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.flipper-fact>img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    position: absolute;
+    backface-visibility: hidden;
     border-radius: 10px;
 }
 
-.album img:last-child {
+.album article:last-child {
     grid-column: span 2;
     grid-row: span 1;
+}
+
+.flipper-fact>img:nth-child(even) {
+    transform: rotateY(180deg);
+}
+
+.album article:hover .flipper-fact {
+    transform: rotateY(180deg);
 }
 
 @media (max-width: 890px) {
@@ -817,9 +847,15 @@ details[open] p {
 }
 
 @media (max-width: 400px) {
-    .album img:last-child {
+    .album .flipper-fact:last-child {
         grid-column: 1/-1;
         grid-row: auto;
+    }
+}
+
+@media (max-width: 690px) {
+    .album article .flipper-fact.flipped {
+        transform: rotateY(180deg);
     }
 }
 
@@ -913,69 +949,72 @@ footer a:hover {
 
 /* dark */
 .modal-overlay {
-  display: none; /* скрыто по умолчанию */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
+    display: none;
+    /* скрыто по умолчанию */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
 }
 
 /* window */
 .modal-window {
-  background: var(--color1);
-  border-radius: 12px;
-  padding: 30px 35px;
-  max-width: 400px;
-  width: 90%;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  position: relative;
-  animation: fadeIn 0.3s ease;
+    background: var(--color1);
+    border-radius: 12px;
+    padding: 30px 35px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: fadeIn 0.3s ease;
 }
 
 /* title */
 .modal-window h2 {
-  margin-top: 0;
-  text-align: center;
-  color: var(--color5);
+    margin-top: 0;
+    text-align: center;
+    color: var(--color5);
 }
 
 /* x */
 .modal-close {
-  position: absolute;
-  top: 0px;
-  right: 18px;
-  font-size: 30px;
-  font-weight: bold;
-  color: var(--color6);
-  cursor: pointer;
-  transition: color 0.2s;
+    position: absolute;
+    top: 0px;
+    right: 18px;
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--color6);
+    cursor: pointer;
+    transition: color 0.2s;
 }
+
 .modal-close:hover {
-  color: var(--color5);
+    color: var(--color5);
 }
 
 /* Список соцсетей */
 .modal-window article {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  place-items: center center;
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    place-items: center center;
 }
+
 .social-list a {
-  display: flex;
-  align-items: center;
-  padding: 12px 16px;
-  /* text-decoration: none; */
-  color: var(--color5);
-  font-size: 1rem;
-  transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    /* text-decoration: none; */
+    color: var(--color5);
+    font-size: 1rem;
+    transition: background-color 0.2s;
 }
 
 @keyframes fadeMW {
