@@ -908,3 +908,89 @@ footer a:hover {
         padding: 32px 24px;
     }
 }
+
+/* ----------- modal window ---------------- */
+
+/* dark */
+.modal-overlay {
+  display: none; /* скрыто по умолчанию */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* window */
+.modal-window {
+  background: var(--color1);
+  border-radius: 12px;
+  padding: 30px 35px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+/* title */
+.modal-window h2 {
+  margin-top: 0;
+  text-align: center;
+  color: var(--color5);
+}
+
+/* x */
+.modal-close {
+  position: absolute;
+  top: 0px;
+  right: 18px;
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--color6);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.modal-close:hover {
+  color: var(--color5);
+}
+
+/* Список соцсетей */
+.modal-window article {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  place-items: center center;
+}
+.social-list a {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  /* text-decoration: none; */
+  color: var(--color5);
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+@keyframes fadeMW {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Чтобы иконки не ломались в старых браузерах */
+.fab {
+    display: inline-block;
+}

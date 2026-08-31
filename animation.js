@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   // Проверяем мобильное устройство (ширина <= 690px)
   const isMobile = window.matchMedia('(max-width: 690px)');
 
@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Следим за прокруткой с оптимизацией через requestAnimationFrame
   let ticking = false;
-  window.addEventListener('scroll', function() {
+  window.addEventListener('scroll', function () {
     if (!ticking) {
-      window.requestAnimationFrame(function() {
+      window.requestAnimationFrame(function () {
         updateCards();
         ticking = false;
       });
@@ -43,4 +43,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Обновляем при изменении размера окна (поворот экрана)
   window.addEventListener('resize', updateCards);
+});
+
+// ------------ modal window ----------
+document.addEventListener('DOMContentLoaded', function() {
+  // Все кнопки с классом social-modal-open
+  const openBtns = document.querySelectorAll('.social-modal-open');
+  const overlay = document.getElementById('socialModalOverlay');
+  const closeBtn = document.getElementById('closeSocialModal');
+
+  // Открыть окно по любой кнопке
+  openBtns.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      overlay.style.display = 'flex';
+    });
+  });
+
+  // Закрыть по крестику
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function() {
+      overlay.style.display = 'none';
+    });
+  }
+
+  // Закрыть по клику на подложку (вне окна)
+  if (overlay) {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) {
+        overlay.style.display = 'none';
+      }
+    });
+  }
+
+  // Закрыть по клавише Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && overlay && overlay.style.display === 'flex') {
+      overlay.style.display = 'none';
+    }
+  });
 });
